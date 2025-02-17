@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/svelte": "^6.0.2",
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.16",
+    "astro": "^4.16.18",
     "image-size": "^1.1.1",
     "mime-types": "^2.1.35",
     "rehype-attr": "^3.0.3",
