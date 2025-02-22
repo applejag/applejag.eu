@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import ArticleLayout from "./ArticleLayout.astro";
+import Comments from "../components/Comments.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -37,4 +38,7 @@ const { title, description, tags, pubDate, updatedDate, heroImage } =
 		</div>
 	</div>
 	<slot />
-</BaseLayout>
+	<div slot="after-article" class="container mx-auto">
+		<Comments />
+	</div>
+</ArticleLayout>

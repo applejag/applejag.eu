@@ -29,6 +29,7 @@ const { title, description, headTitle, heroImage } = Astro.props;
 				<slot />
 			</div>
 		</article>
+		<slot name="after-article" />
 	</main>
 </BaseLayout>
 
