@@ -1,18 +1,20 @@
 ---
+import type { OpenGraph } from "../components/BaseHead.astro";
 import HeroImage from "../components/HeroImage.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
+	og?: OpenGraph;
 	title: string;
 	description: string;
 	headTitle?: string;
 	heroImage?: string;
 }
 
-const { title, description, headTitle, heroImage } = Astro.props;
+const { og, title, description, headTitle, heroImage } = Astro.props;
 ---
 
-<BaseLayout title={headTitle ?? title} description={description} image={heroImage}>
+<BaseLayout og={og} title={headTitle ?? title} description={description} image={heroImage}>
 	<main class="px-4">
 		<article>
 			{

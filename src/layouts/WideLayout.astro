@@ -1,16 +1,18 @@
 ---
+import type { OpenGraph } from "../components/BaseHead.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
+	og?: OpenGraph;
 	title: string;
 	description: string;
 }
 
-const { title, description } = Astro.props;
+const { og, title, description } = Astro.props;
 
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout og={og} title={title} description={description}>
 	<main class="px-4 mx-auto container">
 		<slot/>
 	</main>

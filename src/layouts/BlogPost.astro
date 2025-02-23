@@ -3,14 +3,24 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import ArticleLayout from "./ArticleLayout.astro";
 import Comments from "../components/Comments.astro";
+import type { OpenGraph } from "../components/BaseHead.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, tags, pubDate, updatedDate, heroImage } =
 	Astro.props;
+
+const og: OpenGraph = {
+	type: "article",
+	article: {
+		author: "Kalle Fagerberg",
+		publishedTime: pubDate,
+		tag: tags,
+	}
+}
 ---
 
-<ArticleLayout title={title} description={description} heroImage={heroImage}>
+<ArticleLayout og={og} title={title} description={description} heroImage={heroImage}>
 	<div slot="subtitle" class="my-4">
 		<div class="date">
 			<FormattedDate date={pubDate} />
