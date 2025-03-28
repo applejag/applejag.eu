@@ -4,7 +4,7 @@ import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
 import { getCollection } from "astro:content";
 import fs from "fs";
-import sizeOf from "image-size";
+import { imageSizeFromFile } from "image-size/fromFile";
 import mime from "mime-types";
 import { join } from "path";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
@@ -33,7 +33,7 @@ export async function GET(context) {
     if (heroImage) {
       const url = new URL(heroImage, context.site);
       const path = join("public", heroImage);
-      const dimensions = sizeOf(path);
+      const dimensions = await imageSizeFromFile(path);
       const mimeType = mime.lookup(heroImage);
       feedItem.customData = `<media:content
 							type="${mimeType}"
