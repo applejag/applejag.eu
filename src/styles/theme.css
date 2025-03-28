@@ -1,59 +1,70 @@
+@import "@fontsource/ubuntu";
+@import "@fontsource/ubuntu-mono";
+
+[data-theme="rocket"] {
+  --heading-font-family: "Ubuntu", sans-serif;
+  --base-font-family: "Ubuntu", sans-serif;
+  --anchor-font-family: "Ubuntu", sans-serif;
+  --default-mono-font-family: "Ubuntu Mono";
+}
+
 .sr-only {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-    clip: rect(1px 1px 1px 1px);
-    /* maybe deprecated but we need to support legacy browsers */
-    clip: rect(1px, 1px, 1px, 1px);
-    /* modern browsers, clip-path works inwards from each corner */
-    clip-path: inset(50%);
-    /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
-    white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
 }
 
 /* Skeleton gradient background */
 html,
 body {
-    @apply h-full;
+  @apply h-full;
 }
 body {
-    background-image: radial-gradient(
-            at 0% 0%,
-            rgba(var(--color-secondary-500) / 0.33) 0px,
-            transparent 50%
-        ),
-        radial-gradient(
-            at 98% 1%,
-            rgba(var(--color-error-500) / 0.33) 0px,
-            transparent 50%
-        );
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image:
+    radial-gradient(
+      at 0% 0%,
+      color-mix(in srgb, var(--color-secondary-500) 33%, transparent) 0px,
+      transparent 50%
+    ),
+    radial-gradient(
+      at 98% 1%,
+      color-mix(in srgb, var(--color-error-500) 33%, transparent) 0px,
+      transparent 50%
+    );
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Skeleton has weird default styling */
 ul.ul {
-    list-style-type: disc;
-    margin-left: 1em;
+  list-style-type: disc;
+  margin-left: 1em;
 }
 
 pre.astro-code {
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 8px;
-    background-color: #24292e88 !important;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  background-color: #24292e88 !important;
 }
 
 pre.astro-code > code {
-    background: none !important;
-    padding: 0;
+  background: none !important;
+  padding: 0;
 }
 
 h1 > code,
@@ -62,5 +73,5 @@ h3 > code,
 h4 > code,
 h5 > code,
 h6 > code {
-    font-size: unset !important;
+  font-size: unset !important;
 }

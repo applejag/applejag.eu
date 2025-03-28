@@ -14,7 +14,7 @@ const { og, title, description, image } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="dark" data-theme="rocket">
 	<head>
 		<BaseHead og={og} title={title} description={description} image={image} />
 		<style>
@@ -26,7 +26,7 @@ const { og, title, description, image } = Astro.props;
 		</style>
 	</head>
 
-	<body data-theme="rocket">
+	<body>
 		<Header />
 		<slot/>
 		<hr class="mt-8 container mx-auto" />

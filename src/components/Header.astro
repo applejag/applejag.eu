@@ -1,10 +1,14 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { AppBar } from '@skeletonlabs/skeleton';
+import { AppBar } from '@skeletonlabs/skeleton-svelte';
 ---
 
-<header class="variant-glass-surface mb-4">
-	<AppBar gridColumns="md:grid-cols-3 grid-cols-2" slotDefault="md:place-self-center place-content-end flex" background="variant-glass-surface">
+<header class="sticky top-0 backdrop-blur-sm bg-surface-600/20 mb-4">
+	<AppBar
+		toolbarBase="grid items-center"
+		toolbarGridCols="md:grid-cols-3 grid-cols-2"
+	  centerBase="md:place-self-center place-content-end flex"
+	  background="variant-glass-surface">
 		<h2 slot="lead" class="h3"><a href="/">Applejag</a></h2>
 		<ul slot="default" class="list-style-none flex flex-wrap ">
 			<li class="px-2"><HeaderLink href="/">Home</HeaderLink></li>
