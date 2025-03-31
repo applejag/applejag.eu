@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.0.17",
     "astro": "^5.5.5",
     "image-size": "^2.0.1",
-    "mime-types": "^2.1.35",
+    "mime-types": "^3.0.1",
     "rehype-attr": "^4.0.2",
     "rehype-class-names": "^2.0.0",
     "svelte": "^5.25.3",
