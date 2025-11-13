@@ -36,7 +36,6 @@ Code forges:
 
 Social networks:
 
-- Mastodon: [@kalle@javisst.space](https://javisst.space/@kalle)<!--rehype:rel=me-->
 - DEV: [jillejr](https://dev.to/jillejr)<!--rehype:rel=me-->
 - Discord: [applejag](https://discord.com/users/158398273541898240)<!--rehype:rel=me-->
 - LinkedIn: [kallef8](https://www.linkedin.com/in/kallef8)
