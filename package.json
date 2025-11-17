@@ -17,18 +17,18 @@
     "@fontsource/ubuntu": "^5.2.8",
     "@fontsource/ubuntu-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.15.6",
+    "astro": "^5.15.8",
     "image-size": "^2.0.2",
     "mime-types": "^3.0.1",
     "rehype-attr": "^4.1.1",
     "rehype-class-names": "^2.0.0",
-    "svelte": "^5.43.5",
+    "svelte": "^5.43.8",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
     "@astrojs/language-server": "^2.16.0",
-    "@skeletonlabs/skeleton": "^4.3.0",
-    "@skeletonlabs/skeleton-svelte": "^4.3.0",
+    "@skeletonlabs/skeleton": "^4.3.4",
+    "@skeletonlabs/skeleton-svelte": "^4.3.4",
     "@skeletonlabs/tw-plugin": "^0.4.1",
     "@types/mime-types": "^3.0.1"
   }
