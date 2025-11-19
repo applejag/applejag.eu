@@ -17,7 +17,7 @@
     "@fontsource/ubuntu": "^5.2.8",
     "@fontsource/ubuntu-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.15.8",
+    "astro": "^5.15.9",
     "image-size": "^2.0.2",
     "mime-types": "^3.0.1",
     "rehype-attr": "^4.1.1",
