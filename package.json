@@ -17,12 +17,12 @@
     "@fontsource/ubuntu": "^5.2.8",
     "@fontsource/ubuntu-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.17.1",
+    "astro": "^5.17.2",
     "image-size": "^2.0.2",
     "mime-types": "^3.0.2",
     "rehype-attr": "^4.1.1",
     "rehype-class-names": "^2.0.0",
-    "svelte": "^5.50.0",
+    "svelte": "^5.51.2",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
