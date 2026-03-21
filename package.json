@@ -10,25 +10,25 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/svelte": "^7.2.5",
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/svelte": "^8.0.0",
     "@fontsource/ubuntu": "^5.2.8",
     "@fontsource/ubuntu-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.18.0",
+    "astro": "^6.0.4",
     "image-size": "^2.0.2",
     "mime-types": "^3.0.2",
     "rehype-attr": "^4.1.1",
     "rehype-class-names": "^2.0.0",
-    "svelte": "^5.53.7",
+    "svelte": "^5.53.12",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
-    "@astrojs/language-server": "^2.16.3",
-    "@skeletonlabs/skeleton": "^4.12.1",
-    "@skeletonlabs/skeleton-svelte": "^4.12.1",
+    "@astrojs/language-server": "^2.16.4",
+    "@skeletonlabs/skeleton": "^4.13.0",
+    "@skeletonlabs/skeleton-svelte": "^4.13.0",
     "@skeletonlabs/tw-plugin": "^0.4.1",
     "@types/mime-types": "^3.0.1"
   }
