@@ -2,7 +2,7 @@ import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
 import rss from "@astrojs/rss";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import fs from "fs";
 import { imageSizeFromFile } from "image-size/fromFile";
 import mime from "mime-types";
@@ -26,7 +26,7 @@ export async function GET(context) {
       pubDate: post.data.pubDate,
       description: post.data.description,
       categories: post.data.tags,
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
       author: "Kalle Fagerberg",
     };
     const heroImage = post.data.heroImage;
@@ -60,7 +60,7 @@ export async function GET(context) {
 			<h1>${feedItem.title}</h1>
     `;
 
-    const { Content } = await post.render();
+    const { Content } = await render(post);
     const content = await container.renderToString(Content);
     feedItem.content += content;
 
