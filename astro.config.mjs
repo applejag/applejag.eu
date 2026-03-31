@@ -41,5 +41,8 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      noExternal: ['@skeletonlabs/skeleton-svelte'],
+    },
   },
 });
