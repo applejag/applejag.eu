@@ -5,44 +5,47 @@ import svelte from "@astrojs/svelte";
 import addClasses from "rehype-class-names";
 import rehypeAttrs from "rehype-attr";
 import tailwindcss from "@tailwindcss/vite";
+import { unified } from "@astrojs/markdown-remark";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://applejag.eu",
-  integrations: [mdx(), sitemap(), svelte()],
+	site: "https://applejag.eu",
+	integrations: [mdx(), sitemap(), svelte()],
 
-  markdown: {
-    rehypePlugins: [
-      [
-        addClasses,
-        {
-          a: "anchor",
-          h1: "h1 my-8 border-b-4",
-          h2: "h2 my-8 border-b-4 border-indigo-500",
-          h3: "h3 my-8",
-          h4: "h4 my-8",
-          h5: "h5 my-8",
-          code: "code break-words whitespace-break-spaces",
-          kbd: "kbd",
-          blockquote: "blockquote",
-          p: "my-4",
-          ul: "ul",
-          img: "mx-auto h-auto max-w-full rounded-lg shadow-lg",
-        },
-      ],
-      [
-        rehypeAttrs,
-        {
-          properties: "attr",
-        },
-      ],
-    ],
-  },
+	markdown: {
+		processor: unified({
+			rehypePlugins: [
+				[
+					addClasses,
+					{
+						a: "anchor",
+						h1: "h1 my-8 border-b-4",
+						h2: "h2 my-8 border-b-4 border-indigo-500",
+						h3: "h3 my-8",
+						h4: "h4 my-8",
+						h5: "h5 my-8",
+						code: "code break-words whitespace-break-spaces",
+						kbd: "kbd",
+						blockquote: "blockquote",
+						p: "my-4",
+						ul: "ul",
+						img: "mx-auto h-auto max-w-full rounded-lg shadow-lg",
+					},
+				],
+				[
+					rehypeAttrs,
+					{
+						properties: "attr",
+					},
+				],
+			],
+		}),
+	},
 
-  vite: {
-    plugins: [tailwindcss()],
-    resolve: {
-      noExternal: ['@skeletonlabs/skeleton-svelte'],
-    },
-  },
+	vite: {
+		plugins: [tailwindcss()],
+		resolve: {
+			noExternal: ["@skeletonlabs/skeleton-svelte"],
+		},
+	},
 });
