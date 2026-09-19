@@ -1,5 +1,7 @@
 # Personal website
 
+[![NO AI](https://raw.githubusercontent.com/nuxy/no-ai-badge/master/badge.svg)](https://github.com/nuxy/no-ai-badge)
+
 My personal website, created using the Astro [blog template](https://github.com/Charca/astro-blog-template).
 
 ## 🧞 Commands
