@@ -96,12 +96,9 @@ init_default_context :: proc "contextless" () {
 	}
 }
 
-default_context_ptr :: proc "contextless" () -> ^runtime.Context {
-	return &default_context
-}
-
 @(export)
 boot :: proc "contextless" () {
+  init_default_context()
   context = default_context
   // ...
 }
@@ -136,9 +133,11 @@ on a low-powered [ESP32](https://www.espressif.com/en/products/socs/esp32) chip.
 
 Now to be real, the amount of overhead is still minimal.
 Using Firefly's `ff runtime monitor`, the overhead is only around ~150 fuel
-(an approximation of processing cost provided by [WASMI](https://github.com/wasmi-labs/wasmi))
+(an approximation of processing cost provided by [WASMI](https://github.com/wasmi-labs/wasmi)).
+That's ~150 WASM instructions. Which is really low.
 
-But when I see a problem, and a path to solution, then I cannot rest.
+But when I see a problem, and a path to solution, then I cannot rest until
+I find a solution.
 
 ## The inspiration
 
@@ -148,7 +147,7 @@ from JavaScript they follow the `odin` calling convention by passing that
 pointer to every Odin procedure in WASM. For example:
 
 ```javascript
-// JavaScript glue code
+// excerpt of JavaScript glue code
 // "exports" is the "WebAssembly.instantiate(...).instance.exports"
 if (exports.step) {
   const odin_ctx = exports.default_context_ptr();
@@ -182,7 +181,7 @@ be reused, and runs on `@(init)`.
 ## The solution
 
 I couldn't get `@(init)` to work on `freestanding_wasm32` target. So we will
-need to trigger that fucntion in another way.
+need to trigger that function in another way.
 
 I've defined the following in my Odin package:
 
@@ -208,7 +207,7 @@ Now to trigger it, as explained above, using `context = default_context_ptr()`
 doesn't compile to the correct result.
 
 So we'll write our own glue code. Since the logic is so simple, then we can
-write it in [WebAssembly text format (`.wat`)](https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Understanding_the_text_format):
+even write it in [WebAssembly text format (`.wat`)](https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Understanding_the_text_format):
 
 ```wasm
 (module $init
@@ -216,13 +215,11 @@ write it in [WebAssembly text format (`.wat`)](https://developer.mozilla.org/en-
   (import "app" "default_context_ptr" (func $app.default_context_ptr (result i32)))
   (import "app" "boot_context" (func $app.boot_context (param i32)))
   (import "app" "render_context" (func $app.render_context (param i32)))
-  (export "boot" (func $boot))
-  (export "render" (func $render))
-  (func $boot
+  (func (export "boot")
     (call $app.init_default_context)
     (call $app.boot_context
       (call $app.default_context_ptr)))
-  (func $render
+  (func (export "render")
     (call $app.render_context
       (call $app.default_context_ptr))))
 ```
@@ -261,7 +258,7 @@ In its simplest form, you just give it the module paths:
 wasm-merge <module-1-path> <module-1-name> <module-2-path> <module-2-name> -o build/app.wasm
 ```
 
-(`wasm-merge` supprts reading from a mix of `.wat` and `.wasm` files)
+(`wasm-merge` supports reading from a mix of `.wat` and `.wasm` files)
 
 The `module-*-name` parameters defines the "WASM module name" used when
 cross-referencing imports. So given our `.wat` script above, then we want to
@@ -316,8 +313,8 @@ And that's it :)
 
 ## Bonus
 
-Best is to toss these command-lines into something like a `Makefile`, a [justfile](https://just.systems/),
-a [Taskfile.yml](https://taskfile.dev/), or a [mise.toml](https://mise.jdx.dev/tasks/#tasks-in-mise-toml-files).
+Best is to toss these command-lines into something like a `Makefile`, a [`justfile`](https://just.systems/),
+a [`Taskfile.yml`](https://taskfile.dev/), or a [`mise.toml`](https://mise.jdx.dev/tasks/#tasks-in-mise-toml-files).
 
 Personally I prefer `mise.toml`, as with [mise-en-place](https://mise.jdx.dev/)
 you can also define all the dependencies you need, such as the binaryen ones:
