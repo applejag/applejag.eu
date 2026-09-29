@@ -121,7 +121,7 @@ render :: proc "contextless" () {
 But when analyzing the compiled output (e.g via [wabt's `wasm2wat`](https://github.com/WebAssembly/wabt)
 or [binaryen's `wasm-dis`](https://github.com/WebAssembly/binaryen)),
 then we see that Odin is still calling `runtime::_core.odin_::__init_context`
-in `boot` and `render`, which is where the overhead is coming from.
+in `update` and `render`, which is where the overhead is coming from.
 We want to just blindly reuse the global `default_context`.
 (WASM is single-threaded, so we don't have to worry about race conditions)
 
